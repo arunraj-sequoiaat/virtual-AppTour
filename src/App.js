@@ -11,10 +11,10 @@ function App() {
       <header className="App-header">
       
         <ul><a href="#home">Home</a></ul>
-        <ul><a href="#home">Edit</a></ul>
-        <ul><a href="#home">Save</a></ul>
-        <ul><a href="#home">Save As</a></ul>
-        <ul><a href="#home">Delete</a></ul>
+        <ul><a href="#edit">Edit</a></ul>
+        <ul><a href="#Save">Save</a></ul>
+        <ul><a href="#Save As">Save As</a></ul>
+        <ul><a href="#delete">Delete</a></ul>
         
       </header>
       <figure className='figure'>
