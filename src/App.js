@@ -4,12 +4,6 @@ import SideSection from './Side-Section';
 import image1 from './images/Image.webp';
 import Intro from './Intro';
 
-
-
-
-
-
-
   
   const App = () => {
     const steps = [
@@ -89,10 +83,7 @@ import Intro from './Intro';
       </figure>
       <Intro steps={steps}/>
       <SideSection/>
-      
-      
-      
-      
+         
     </div>
   );
 }
