@@ -1,80 +1,24 @@
-
+import React from 'react';
 import './App.css';
-import SideSection from './Side-Section';
+import VirtualTour from './VirtualTour';
 import image1 from './images/Image.webp';
-import Intro from './Intro';
+import SideSection from './Side-Section';
 
-  
-  const App = () => {
-    const steps = [
-      {
-        element: '#home',
-        
-        intro: 'This section takes you to the Home of the application',
-      },
-      {
-        element: '#edit',
-        intro: 'This section helps you to edit the image.',
-      },
-      {
-        element: '#save',
-        intro: '"Here you can save the changes you made to an image',
-      },
-      {
-        element: '#save-as',
-        intro: 'Here you can save the image as you wish.',
-      },
-      {
-        element: '#delete',
-        intro: 'Here you can throw the image to the bin.',
-      },
-      {
-        element: '#open',
-        intro: 'Here you can open the image you need',
-      },
-      {
-        element: '#file',
-        intro: 'This is the section of the files',
-      },
-      {
-        element: '#zoom',
-        intro: 'Here you can see it close',
-      },
-      {
-        element: '#hide',
-        intro: 'Here you can hide the descripton',
-      },
-      {
-        element: '#download',
-        intro: 'Here you can download the image',
-      },
-      {
-        element: '#heading',
-        intro: 'This shows the title of the image',
-      },
-      {
-        element: '#description',
-        intro: 'This is the description about the image shown',
-      },
-           {
-        element: '#heading1',
-        intro: 'This shows the title of the image',
-      },
-      {
-        element: '#description1',
-        intro: 'This is the description-1 about the image shown',
-      },
-           {
-        element: '#heading2',
-        intro: 'This shows the title of the image',
-      },
-      {
-        element: '#description2',
-        intro: 'This is the description-2 about the image shown',
-      },
-      
-      
-    ];
+
+
+function App() {
+  const tourSteps = [
+    { elementSelector: '#home', content: 'Step 1: Welcome to Element 1' },
+    { elementSelector: '#edit', content: 'Step 2: Discover Element 2' },
+    { elementSelector: '#save', content: 'Step 1: Welcome to Element 3' },
+    { elementSelector: '#save-as', content: 'Step 2: Discover Element 4' },
+    { elementSelector: '#delete', content: 'Step 1: Welcome to Element 1' },
+    { elementSelector: '#open', content: 'Step 2: Discover Element 4' },
+    { elementSelector: '#heading', content: 'Step 2: Discover Element 2' },
+    { elementSelector: '#heading1', content: 'Step 1: Welcome to Element 3' },
+    
+    
+  ];
   return (
     <div className="App">
       
@@ -112,8 +56,8 @@ import Intro from './Intro';
           </p>
       </figcaption>
       </figure>
-      <Intro steps={steps}/>
       <SideSection/>
+      <VirtualTour steps={tourSteps} />
          
     </div>
   );
