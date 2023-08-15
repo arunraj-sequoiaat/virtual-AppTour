@@ -9,6 +9,7 @@ import Intro from './Intro';
     const steps = [
       {
         element: '#home',
+        
         intro: 'This section takes you to the Home of the application',
       },
       {
@@ -55,6 +56,22 @@ import Intro from './Intro';
         element: '#description',
         intro: 'This is the description about the image shown',
       },
+           {
+        element: '#heading1',
+        intro: 'This shows the title of the image',
+      },
+      {
+        element: '#description1',
+        intro: 'This is the description-1 about the image shown',
+      },
+           {
+        element: '#heading2',
+        intro: 'This shows the title of the image',
+      },
+      {
+        element: '#description2',
+        intro: 'This is the description-2 about the image shown',
+      },
       
       
     ];
@@ -76,6 +93,20 @@ import Intro from './Intro';
       <figcaption>
          <h1 id='heading'>This is an image</h1>
          <p id='description'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          </p>
+      </figcaption>
+      <figcaption>
+         <h1 id='heading1'>This is an image</h1>
+         <p id='description1'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+           incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+           exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          </p>
+      </figcaption>
+      <figcaption>
+         <h1 id='heading2'>This is an image</h1>
+         <p id='description2'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           </p>
