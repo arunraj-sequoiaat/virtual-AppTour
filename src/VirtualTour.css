@@ -1,0 +1,23 @@
+
+.virtual-tour {
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(231, 213, 213);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .highlighted {
+    border: 1px solid #080808fd;
+    background-color: transparent;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+  }
+ .tour-button{
+    margin-left:  50px;
+   
+ }
