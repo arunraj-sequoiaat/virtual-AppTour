@@ -13,10 +13,8 @@ display:block;
  justify-content:space-evenly;
   width: 100%;
   color: white;
-  text-decoration: none;
-  
+  text-decoration: none;  
 }
-
 
 .Sidesection{
   display: flex; 
@@ -27,12 +25,13 @@ display:block;
   height: 100vh;
   border: 2px solid black
 }
+
 .Toolbar{
   display: inline-block;
   justify-content: space-evenly;
 }
 
-a {
+ a{
   color: rgb(238, 238, 241);
   text-decoration: none;
 }

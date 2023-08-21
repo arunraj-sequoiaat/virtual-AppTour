@@ -8,23 +8,21 @@ const VirtualTour = ( {customStyles, customSteps,buttonStyles}) => {
 
 
   const  tourSteps  =    customSteps || [
-    // { elementSelector: '#home', content: ' Welcome to Element 1' },
-    // { elementSelector: '#edit', content: ' Discover Element 2' },
-    // { elementSelector: '#save', content: ' Welcome to Element 3' },
-    // { elementSelector: '#save-as', content: 'Discover Element 4' },
-    // { elementSelector: '#delete', content: ' Welcome to Element ' },
-    // { elementSelector: '#open', content: ' Discover Element 4' },
-    // { elementSelector: '#file', content: ' Discover Element 4' },
-    // { elementSelector: '#zoom', content: ' Discover Element 4' },
-    // { elementSelector: '#hide', content: 'Discover Element 4' },
-    // { elementSelector: '#download', content: 'Discover Element 4' },
-    // { elementSelector: '#image', content: ' Discover Element 4' },
-    // { elementSelector: '#heading', content: 'Discover Element 2' },
-    // { elementSelector: '#description', content: ' Welcome to Element 3' },
-    // { elementSelector: '#heading1', content: ' Discover Element 2' },
-    // { elementSelector: '#description1', content: 'Welcome to Element 3' },
-    // { elementSelector: '#heading2', content: ' Discover Element 2' },
-    // { elementSelector: '#description2', content: ' Welcome to Element 3' }
+    { elementSelector: '#home', content: ' This is the home section ' },
+    { elementSelector: '#edit', content: ' This is th edit section where we can edit' },
+    { elementSelector: '#save', content: 'This section s usd to save things' },
+    { elementSelector: '#save-as', content: 'This section helps you to save the image with unique names' },
+    { elementSelector: '#delete', content: ' Here yo can delete the image ' },
+    { elementSelector: '#open', content: ' Here you can open the existing image' },
+    { elementSelector: '#file', content: ' Here youcan select the files' },
+    { elementSelector: '#zoom', content: ' Here you can zoom the image' },
+    { elementSelector: '#hide', content: 'Here you can hide the description of the image' },
+    { elementSelector: '#download', content: 'Here you can download the image' },
+    { elementSelector: '#image', content: 'This section shows you the image' },
+    { elementSelector: '#heading', content: 'This section shows the heading of the viewing image' },
+    { elementSelector: '#description', content: ' Here we can see the description of the image' },
+    { elementSelector: '#heading1', content: ' This section shows the heading 1 of the viewing image ' },
+    { elementSelector: '#description1', content: 'Here we can see the description 1 of the image' }
   ]  ;
 
   const nextStep = () => {
