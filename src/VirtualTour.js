@@ -193,11 +193,13 @@ const VirtualTour = ({ customStyles ,customSteps, buttonStyles,theme}) => {
   }
 
   return (
+    <div>
+      {!tourClosed && <div className="blurred-overlay"></div>}
     <div
       className={`virtual-tour ${tourClosed ? "closed" : ""}`}
       style={customStyles}
     >
-      {!tourClosed && <div className="blurred-overlay"></div>}
+     
         {highlightedElement && (
           <div className="highlighted-element-info">
             <p>{highlightedElement.id}</p>
@@ -236,6 +238,7 @@ const VirtualTour = ({ customStyles ,customSteps, buttonStyles,theme}) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

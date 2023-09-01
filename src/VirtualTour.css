@@ -10,7 +10,7 @@
       /* padding: 20px; */
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
       transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
-
+      z-index: 100000;
       
     }
 
@@ -25,6 +25,7 @@
     transition: border-color 0.3s ease-in-out;
     box-shadow: 0px 0px 10px rgba(0, 0, 50, 0.9); 
     position: relative;
+    z-index:  100000;
    
   }
 
@@ -38,7 +39,7 @@
       line-height: 1.5;
       font-size: 16px;
       color: white;
-      z-index: 9999;
+     
 
 }
 
@@ -75,6 +76,5 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.491); 
   pointer-events: none; 
-  z-index: -9999;
-    
+  z-index: 99998;  
 }

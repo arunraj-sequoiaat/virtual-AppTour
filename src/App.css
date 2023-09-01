@@ -76,6 +76,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  z-index: 99999;
 }
 
 
@@ -86,6 +87,7 @@ body {
   padding: 5px 10px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+ 
 }
 
 .Sidesection a:hover {
@@ -111,6 +113,7 @@ body {
   color: rgb(42, 202, 27);
   position: fixed;
   top: 0;
+  z-index: 99999;
   
 }
 .App-header a{
