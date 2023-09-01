@@ -24,8 +24,7 @@ const VirtualTour = ({ customStyles ,customSteps, buttonStyles,theme}) => {
     },
     { elementSelector: "#delete", content: " Here yo can delete the image" },
     {
-      elementSelector: "#open",
-      content: " Here you can open the existing image",
+      elementSelector: "#open",content: " Here you can open the existing image",
     },
     { elementSelector: "#file", content: " Here youcan select the files" },
     { elementSelector: "#zoom", content: " Here you can zoom the image" },
@@ -131,61 +130,6 @@ const VirtualTour = ({ customStyles ,customSteps, buttonStyles,theme}) => {
       };
     }
   }, [currentStep, tourSteps, highlightedElement, tourClosed]);
-  
-  
-  
-  
-
-  // useEffect(() => {
-  //   if (!tourClosed) {
-  //     const showStep = () => {
-  //       const step = tourSteps[currentStep];
-  //       const element = document.querySelector(step.elementSelector);
-
-  //       if (highlightedElement) {
-  //         highlightedElement.classList.remove("highlighted");
-  //       }
-
-  //       if (element) {
-  //         const tourDiv = document.querySelector(".virtual-tour");
-  //         const elementX = element.offsetLeft;
-  //         const elementY = element.offsetTop + element.offsetHeight;
-
-  //         tourDiv.style.left = `${elementX}px`;
-  //         tourDiv.style.top = `${elementY}px`;
-
-  //         const viewportHeight = window.innerHeight;
-  //         const tourDivBottom = elementY + tourDiv.offsetHeight;
-
-  //         if (elementY < window.scrollY) {
-  //           window.scrollTo({
-  //             top: elementY - window.innerHeight / 2,
-  //             behavior: "smooth",
-  //           });
-  //         } else if (tourDivBottom > viewportHeight) {
-  //           window.scrollTo({
-  //             top: elementY - window.innerHeight / 2,
-  //             behavior: "smooth",
-  //           });
-  //         }
-
-  //         element.classList.add("highlighted");
-  //         setHighlightedElement(element);
-  //       }
-  //     };
-
-  //     showStep();
-
-  //     return () => {
-  //       if (highlightedElement) {
-  //         highlightedElement.classList.remove("highlighted");
-  //       }
-  //     };
-  //   }
-  // }, [currentStep, tourSteps, highlightedElement, tourClosed]);
-
- 
-
   
 
   if (tourClosed) {

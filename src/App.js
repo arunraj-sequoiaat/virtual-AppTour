@@ -1,5 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './App.css';
+
 import VirtualTour from './VirtualTour';
 import image1 from './images/Image.webp';
 import SideSection from './Side-Section';
@@ -20,20 +22,23 @@ import SideSection from './Side-Section';
 //   }
 
 function App() {
+
  
   return (
-    <div className="App">
+   
+       <div className="App">
       
       <header className="App-header">
       
-        <ul><a href="#home" id='home'>Home</a></ul>
-        <ul><a href="#edit" id='edit'>Edit</a></ul>
-        <ul><a href="#Save" id='save'>Save</a></ul>
-        <ul><a href="#Save As" id='save-as'>Save As</a></ul>
-        <ul><a href="#delete" id='delete'>Delete</a></ul>
+          <ul><Link to="/" id='home'>Home</Link></ul>
+          <ul><Link to="/Edit" id='edit'>Edit</Link></ul>
+          <ul><Link to="/save" id='save'>Save</Link></ul>
+          <ul><Link to="/save-as" id='save-as'>Save As</Link></ul>
+          <ul><Link to="/delete" id='delete'>Delete</Link></ul>
         
       </header>
-      <figure className='figure'>
+       
+      <figure className='figureContainer'>
       <img id='image' className='image' src={image1} alt={''}/>
       <figcaption>
          <h1 id='heading'>This is an image</h1>
@@ -52,6 +57,7 @@ function App() {
       </figcaption>
 
       </figure>
+
       <SideSection/>
       <VirtualTour/>
        {/* customSteps={customSteps}
@@ -60,10 +66,10 @@ function App() {
       
          
     </div>
+   
   );
 }
 
 export default App;
-
 
 
