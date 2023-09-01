@@ -1,40 +1,52 @@
   .virtual-tour {
       position: absolute;
+      width: 200px; 
+      max-height: 180vh; 
+      overflow-y: auto; 
       margin-top: 10px;
-      background: white; 
-      border: 2px solid rgb(230, 225, 225); 
+      background: #1D5E53;
+      /* border: 2px solid rgb(230, 225, 225);  */
       border-radius: 4px;
       /* padding: 20px; */
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
       transition: left 0.3s ease-in-out, top 0.3s ease-in-out;
+
+      
     }
-    
-  .highlighted {
+
+    .highlighted {
     font-weight: 600;
     border: 1px solid #0d0c0cfd;
-    background-color:#f5f5f5;
-    color: black;
+    background-color:#1D5E53;
+    color: rgb(251, 251, 251);
     outline: none;
     border-radius: 4px;
     padding: 5px;
     transition: border-color 0.3s ease-in-out;
     box-shadow: 0px 0px 10px rgba(0, 0, 50, 0.9); 
+    position: relative;
+   
   }
+
  .virtual-tour.closed {
       display: none;
 }
  .tour-content {
       padding: 20px;
-      background-color: #f5f5f5; 
-      margin-bottom: 10px;
+      background-color: black;
+      margin:0 auto;
+      line-height: 1.5;
+      font-size: 16px;
+      color: white;
+      z-index: 9999;
+
 }
 
 .highlighted-element-info {
   text-align: center;
-  font-weight: 600;
-  background-color: #ffffff;
-  width: 100%;
-  /* border-radius: 4px; */
+  font-weight: 700;
+  color: white;
+ 
   
 }
 
@@ -42,17 +54,18 @@
    display: absolute;
    text-align: center;
    align-items: center;
-   justify-content:space-evenly;
-   
+   background-color: #000000;
+
 }
 .tour-button {
   margin: 10px 5px;
   padding: 5px 10px;
-  background-color: rgba(115, 123, 123, 0.927);
+  background-color: #1D5E53;
   color: rgb(255, 255, 255);
   border: 1px solid rgb(0, 0, 0);
   border-radius: 4px;
   cursor: pointer;
+
 }
 .blurred-overlay {
   position:fixed;
@@ -65,12 +78,3 @@
   z-index: -9999;
     
 }
-
-
-
-
-
-
-
-
-
