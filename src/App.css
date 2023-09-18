@@ -1,53 +1,4 @@
 
-/* .App {
-
-display:block;
- height: 100vh; 
-
-}
-
-.App-header {
-  background-color: #1114129d;
- display: flex;
- justify-content:space-evenly;
-  width: 100%;
-  color: white;
-  text-decoration: none;  
-}
-
-.Sidesection{
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: rgba(14, 13, 15, 0.868);
-  width: 15%;
-  height: 100vh;
-  border: 2px solid black
-}
-
-.Toolbar{
-  display: inline-block;
-  justify-content: space-evenly;
-}
-
- a{
-  color: rgb(238, 238, 241);
-  text-decoration: none;
-}
-
-.figure{
-  width: 100vh; 
-  float:right;
-  margin-right: 25%;
-  
-  
-}
-.image{
-  border-radius: 5px;
-} */
-
-
-
 body {
   margin: 0;
   padding: 0;
@@ -151,9 +102,3 @@ figcaption {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   margin-left: 180px;
 }
-
-
-
-
-
-

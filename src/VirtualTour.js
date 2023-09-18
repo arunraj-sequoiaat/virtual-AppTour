@@ -1,136 +1,166 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./VirtualTour.css";
 
-const VirtualTour = ({ customStyles ,customSteps, buttonStyles,theme}) => {
+const VirtualTour = ({ customSteps }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [highlightedElement, setHighlightedElement] = useState(null);
   const [tourClosed, setTourClosed] = useState(false);
-  
- 
-  const tourSteps = customSteps || [
-    { elementSelector: "#home", content: " This is the home section " },
-    {
-      elementSelector: "#edit",
-      content: " This is th edit section where we can edit",
-    },
+  const [tourPosition, setTourPosition] = useState({ top: 0, left: 0 });
+  const tourRef = useRef(null);
+  const navigate = useNavigate();
 
-    {
-      elementSelector: "#save",
-      content: "This section is used to save things",
-    },
-    {
-      elementSelector: "#save-as",
-      content: "This section helps you to save the image with unique names",
-    },
-    { elementSelector: "#delete", content: " Here yo can delete the image" },
-    {
-      elementSelector: "#open",content: " Here you can open the existing image",
-    },
-    { elementSelector: "#file", content: " Here youcan select the files" },
-    { elementSelector: "#zoom", content: " Here you can zoom the image" },
-    {
-      elementSelector: "#hide",
-      content: "Here you can hide the description of the image",
-    },
-    {
-      elementSelector: "#download",
-      content: "Here you can download the image",
-    },
-    { elementSelector: "#image", content: "This section shows you the image" },
-    {
-      elementSelector: "#heading",
-      content: "This section shows the heading of the viewing image",
-    },
-    {
-      elementSelector: "#description",
-      content: " Here we can see the description of the image",
-    },
-    {
-      elementSelector: "#heading1",
-      content: " This section shows the heading 1 of the viewing image ",
-    },
-    {
-      elementSelector: "#description1",
-      content: "Here we can see the description 1 of the image",
-    },
-  ];
+  const tourSteps = customSteps || [];
 
+  // next button functionality
   const nextStep = () => {
+    console.log("currentStep", currentStep);
     if (currentStep < tourSteps.length - 1) {
-      setCurrentStep(currentStep + 1);
+      const step = tourSteps[currentStep];
+      if (step.elementType === "link") {
+        // window.location.href = step.nextPage;
+        navigate(step.nextPage);
+        setCurrentStep(currentStep + 1);
+      } else {
+        navigate(step.nextElement);
+        setCurrentStep(currentStep + 1);
+      }
     }
   };
-
-  const previousStep = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+  //back button functionality
+  const handleBackButton = (previousPage, previousElement) => {
+    if (previousPage) {
+      navigate(previousPage);
+      setTimeout(() => {
+        const stepIndex = tourSteps.findIndex(
+          (step) => step.elementSelector === previousElement
+        );
+        if (stepIndex !== -1) {
+          setCurrentStep(stepIndex);
+          const elementToHighlight = document.querySelector(previousElement);
+          if (elementToHighlight) {
+            setHighlightedElement(elementToHighlight);
+          }
+        }
+      }, 100);
+    } else {
+      if (currentStep > 0) {
+        setCurrentStep(currentStep - 1);
+      }
     }
   };
 
   const closeTour = () => {
     setTourClosed(true);
+
+    if (highlightedElement) {
+      highlightedElement.classList.remove("highlighted");
+    }
+  };
+  //positioning of the tour div according to the element position
+  const calculateTourPosition = () => {
+    if (highlightedElement) {
+      const elementRect = highlightedElement.getBoundingClientRect();
+      const tourDiv = tourRef.current;
+      const tourRect = tourDiv.getBoundingClientRect();
+
+      const distanceFromElement = 1;
+
+      if (elementRect.left >= tourRect.width + distanceFromElement) {
+        setTourPosition({
+          top: elementRect.top + window.scrollY,
+          left: elementRect.left - tourRect.width - distanceFromElement,
+        });
+
+        window.scrollTo({
+          left: elementRect.left - tourRect.width - distanceFromElement,
+          top: elementRect.top + window.scrollY,
+          behavior: "smooth",
+        });
+      } else if (
+        elementRect.right + tourRect.width + distanceFromElement <=
+        window.innerWidth
+      ) {
+        setTourPosition({
+          top: elementRect.top + window.scrollY,
+          left: elementRect.right + distanceFromElement,
+        });
+
+        window.scrollTo({
+          left: elementRect.right + distanceFromElement,
+          top: elementRect.top + window.scrollY,
+          behavior: "smooth",
+        });
+      } else if (elementRect.top >= tourRect.height + distanceFromElement) {
+        setTourPosition({
+          top:
+            elementRect.top -
+            tourRect.height -
+            distanceFromElement +
+            window.scrollY,
+          left: elementRect.left + elementRect.width / 2 - tourRect.width / 2,
+        });
+
+        window.scrollTo({
+          top:
+            elementRect.top -
+            tourRect.height -
+            distanceFromElement +
+            window.scrollY,
+          left: elementRect.left + elementRect.width / 2 - tourRect.width / 2,
+          behavior: "smooth",
+        });
+      } else if (
+        elementRect.bottom + tourRect.height + distanceFromElement <=
+        window.innerHeight
+      ) {
+        setTourPosition({
+          top: elementRect.bottom + distanceFromElement + window.scrollY,
+          left: elementRect.left + elementRect.width / 2 - tourRect.width / 2,
+        });
+
+        window.scrollTo({
+          top: elementRect.bottom + distanceFromElement + window.scrollY,
+          left: elementRect.left + elementRect.width / 2 - tourRect.width / 2,
+          behavior: "smooth",
+        });
+      } else {
+        setTourPosition({
+          top: elementRect.top + window.scrollY,
+          left: elementRect.left - tourRect.width - distanceFromElement,
+        });
+
+        window.scrollTo({
+          left: elementRect.left - tourRect.width - distanceFromElement,
+          top: elementRect.top + window.scrollY,
+          behavior: "smooth",
+        });
+      }
+    }
   };
 
   useEffect(() => {
-    if (!tourClosed) {
-      const showStep = () => {
-        const step = tourSteps[currentStep];
-        const element = document.querySelector(step.elementSelector);
-  
-        if (highlightedElement) {
-          highlightedElement.classList.remove("highlighted");
-        }
-  
-        if (element) {
-          const tourDiv = document.querySelector(".virtual-tour");
-          const elementRect = element.getBoundingClientRect();
-          const distanceFromElement = 5;
-          const viewportWidth = window.innerWidth;
-          const viewportHeight = window.innerHeight;
-  
-          let tourX, tourY;
-  
-          if (elementRect.right + tourDiv.offsetWidth + distanceFromElement > viewportWidth) {
-           
-            tourX = elementRect.left - tourDiv.offsetWidth - distanceFromElement;
-          } else {
-           
-            tourX = elementRect.right + distanceFromElement;
-          }
-  
-          
-          tourX = Math.max(0, tourX);
-  
-          if (elementRect.top < 0 || elementRect.bottom > viewportHeight) {
-            
-            const scrollToY = window.scrollY + elementRect.top - viewportHeight / 2;
-            window.scrollTo({
-              top: scrollToY,
-              behavior: "smooth",
-            });
-          }
-  
-          
-          tourY = Math.min(elementRect.bottom + window.scrollY + distanceFromElement, viewportHeight - tourDiv.offsetHeight);
-  
-          tourDiv.style.left = `${tourX}px`;
-          tourDiv.style.top = `${tourY}px`;
-  
-          element.classList.add("highlighted");
-          setHighlightedElement(element);
-        }
-      };
-  
-      showStep();
-  
-      return () => {
-        if (highlightedElement) {
-          highlightedElement.classList.remove("highlighted");
-        }
-      };
-    }
-  }, [currentStep, tourSteps, highlightedElement, tourClosed]);
-  
+    const showStep = () => {
+      const step = tourSteps[currentStep];
+      const element = document.querySelector(step.elementSelector);
+
+      if (element) {
+        calculateTourPosition();
+
+        element.classList.add("highlighted");
+        setHighlightedElement(element);
+      }
+    };
+
+    showStep();
+
+    return () => {
+      if (highlightedElement) {
+        highlightedElement.classList.remove("highlighted");
+      }
+    };
+  }, [currentStep, tourSteps, highlightedElement]);
 
   if (tourClosed) {
     return null;
@@ -139,50 +169,47 @@ const VirtualTour = ({ customStyles ,customSteps, buttonStyles,theme}) => {
   return (
     <div>
       {!tourClosed && <div className="blurred-overlay"></div>}
-    <div
-      className={`virtual-tour ${tourClosed ? "closed" : ""}`}
-      style={customStyles}
-    >
-     
+      <div
+        className={`virtual-tour ${tourClosed ? "closed" : ""}`}
+        style={{ top: tourPosition.top, left: tourPosition.left }}
+        ref={tourRef}
+      >
         {highlightedElement && (
           <div className="highlighted-element-info">
-            <p>{highlightedElement.id}</p>
+            {highlightedElement.id}
           </div>
         )}
-      <div className="tour-content">
-      
-        <p>{tourSteps[currentStep].content}</p>
-      </div>
-      <div className="tour-navigation">
-        <div className="tour-buttons">
-          {currentStep > 0 && (
-            <button
-              className="tour-button"
-              style={buttonStyles}
-              onClick={previousStep}
-            >
-              Back
-            </button>
-          )}
-          {currentStep < tourSteps.length - 1 && (
-            <button
-              className="tour-button"
-              style={buttonStyles}
-              onClick={nextStep}
-            >
-              Next
-            </button>
-          )}
-          <button
-            className="tour-button"
-            style={buttonStyles}
-            onClick={closeTour}
-          >
-            Skip
-          </button>
+        <span className="close-icon" onClick={closeTour}>
+          x
+        </span>
+        <div className="tour-content">
+          <p>{tourSteps[currentStep].content}</p>
+        </div>
+        <div className="tour-navigation">
+          <div className="tour-buttons">
+            {tourSteps[currentStep].hasBackButton && (
+              <button
+                className="tour-button"
+                onClick={() =>
+                  handleBackButton(
+                    tourSteps[currentStep].previousPage,
+                    tourSteps[currentStep].previousElement
+                  )
+                }
+              >
+                {tourSteps[currentStep].backButtonLabel || "Back"}
+              </button>
+            )}
+            {currentStep < tourSteps.length - 1 && (
+              <button className="tour-button" onClick={nextStep}>
+                {tourSteps[currentStep].hasNextButton
+                  ? tourSteps[currentStep].nextButtonLabel
+                  : "Next"}
+              </button>
+            )}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

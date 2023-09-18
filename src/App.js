@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './App.css';
-
-import VirtualTour from './VirtualTour';
 import image1 from './images/Image.webp';
 import SideSection from './Side-Section';
+import VirtualTour from './VirtualTour';
+import { tourSteps } from './tourStep';
 
 // const customSteps = [
 //     { elementSelector: '#home', content: ' Welcome to Element 1' },
@@ -59,13 +59,8 @@ function App() {
       </figure>
 
       <SideSection/>
-      <VirtualTour/>
-       {/* customSteps={customSteps}
-       buttonStyles={buttonStyles} 
-       customStyles={customStyles} */}
-      
-         
-    </div>
+      <VirtualTour customSteps={tourSteps} /> 
+      </div>
    
   );
 }
