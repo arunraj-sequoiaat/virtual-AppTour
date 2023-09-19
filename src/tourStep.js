@@ -94,7 +94,7 @@ export const tourSteps = [
       nextButtonLabel: "Next",
       buttonAction: "moveToNextStep",
       previousPage: "/home",
-      previousElement: "#about1",
+      previousElement: "#zoom",
       nextElement: "#certificates",
     },
     {
