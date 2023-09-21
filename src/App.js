@@ -4,22 +4,7 @@ import './App.css';
 import image1 from './images/Image.webp';
 import SideSection from './Side-Section';
 import VirtualTour from './VirtualTour';
-import { tourSteps } from './tourStep';
 
-// const customSteps = [
-//     { elementSelector: '#home', content: ' Welcome to Element 1' },
-//     { elementSelector: '#edit', content: ' Discover Element 2' },
-//     { elementSelector: '#save', content: ' Welcome to Element 3' },
-//   ]
-//   const buttonStyles = {
-//     backgroundColor: 'blue',
-//     color: 'white', 
-//   };
-
-//     const customStyles={
-//     borderRadius: '4px',
-//     backgroundColor: 'rgba(0, 0, 0, 0.5)'
-//   }
 
 function App() {
 
@@ -59,7 +44,7 @@ function App() {
       </figure>
 
       <SideSection/>
-      <VirtualTour customSteps={tourSteps} /> 
+      <VirtualTour/>
       </div>
    
   );

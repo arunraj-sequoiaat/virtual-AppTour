@@ -1,6 +1,9 @@
-export const tourSteps = [
+export const workFlows = {
+  "home-page-workflow":[
+
     {
       elementSelector: "#home",
+      header:"home tab",
       content: "This is the name of the author on the Home page",
       elementType: "normal",
       hasBackButton: false,
@@ -11,6 +14,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#edit",
+      header:"edit tab",
       content: "This is the slogan section on the Home page",
       elementType: "normal",
       hasBackButton: true,
@@ -21,6 +25,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#save",
+      header:"save tab",
       content: "This is the welcome section on the Home page",
       elementType: "normal",
       hasBackButton: true,
@@ -31,6 +36,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#save-as",
+      header:"save as tab",
       content: "This is the link to join section on the about page",
       elementType: "link",
       hasBackButton: true,
@@ -42,6 +48,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#delete",
+      header:"delete tab",
       content: "This is the highlight section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -54,6 +61,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#open",
+      header:"open tab",
       content: "This is the certificates section on the Home page",
       elementType: "normal",
       hasBackButton: true,
@@ -61,9 +69,11 @@ export const tourSteps = [
       backButtonLabel: "Back",
       nextButtonLabel: "Next",
       previousElement: "#delete",
+      nextElement: "#file",
     },
     {
       elementSelector: "#file",
+      header:"file tab",
       content: "This is the why section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -74,6 +84,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#zoom",
+      header:"zoom tab",
       content: "This is the home tab on the Home page",
       elementType: "link",
       hasBackButton: true,
@@ -86,6 +97,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#hide",
+      header:"hide tab",
       content: "This is the company profile section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -99,6 +111,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#download",
+      header:"download tab",
       content: "This is the process section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -112,6 +125,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#image",
+      header:"image tab",
       content: "This is the process page section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -122,6 +136,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#heading",
+      header:"heading tab",
       content: "This is the processed section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -132,6 +147,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#description",
+      header:"description tab",
       content: "This is the products section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -145,6 +161,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#heading1",
+      header:"heading1 tab",
       content: "This is the  product details section on the About page",
       elementType: "normal",
       hasBackButton: true,
@@ -155,6 +172,7 @@ export const tourSteps = [
     },
     {
       elementSelector: "#descreption1",
+      header:"descreption1 tab",
       content: "This is the  contact section on the About page",
       elementType: "link",
       hasBackButton: true,
@@ -165,7 +183,6 @@ export const tourSteps = [
       previousPage: "/products",
       previousElement: "#product-id",
       nextPage: "/contact",
-    },
-    
-  ];
-  
+    }, 
+  ]
+}
