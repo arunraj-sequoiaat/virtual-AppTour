@@ -1,4 +1,4 @@
-export const tourSteps = [
+export const workflows = [
     {
       elementSelector: "#home",
       content: "This is the name of the author on the Home page",

@@ -1,9 +1,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./VirtualTour.css";
+import "../style/VirtualTour.css";
+import { workflows } from "./tourStep";
 
-const VirtualTour = ({ customSteps }) => {
+const VirtualTour = ({}) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [highlightedElement, setHighlightedElement] = useState(null);
   const [tourClosed, setTourClosed] = useState(false);
@@ -11,7 +12,7 @@ const VirtualTour = ({ customSteps }) => {
   const tourRef = useRef(null);
   const navigate = useNavigate();
 
-  const tourSteps = customSteps || [];
+  const tourSteps = workflows || [];
 
   // next button functionality
   const nextStep = () => {
